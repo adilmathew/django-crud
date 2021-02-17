@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
-
+#"C:/Users/Adil philip mathew/anaconda3/scripts/activate.bat"
 from pathlib import Path
 import os
 
