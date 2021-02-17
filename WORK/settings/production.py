@@ -26,7 +26,7 @@ SECRET_KEY = '^^f5+u!rf&l4c7*!#^2n)a$4d0)inl)q@zea00&mfach+wl)-t'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["workindipl.herokuapp.com"]
 AUTH_USER_MODEL = 'users.User'
 
 
@@ -101,7 +101,9 @@ DATABASES = {
         'PORT': '',
     }
 }
-
+import dj_database_url
+db_from_env = dj_database_url.config()
+DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
