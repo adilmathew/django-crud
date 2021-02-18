@@ -98,8 +98,8 @@ DATABASES = {
         'NAME': 'WORK',
         'USER': 'postgres',
         'PASSWORD':'adminindi',
-        'HOST': 'localhost',
-        'PORT': '',
+        #'HOST': 'localhost',
+        #'PORT': '',
     }
 }
 import dj_database_url
