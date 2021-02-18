@@ -26,7 +26,7 @@ SECRET_KEY = '^^f5+u!rf&l4c7*!#^2n)a$4d0)inl)q@zea00&mfach+wl)-t'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = [ 'workindipl.herokuapp.com',]
+ALLOWED_HOSTS = ["*"]
 AUTH_USER_MODEL = 'users.User'
 
 
