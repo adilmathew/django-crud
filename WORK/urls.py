@@ -26,7 +26,7 @@ from rfq.views import ListofrfqView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('employee/', include('employee.urls')),
-    path('login/', views.LoginAPIView.as_view())
+    path('login/', LoginAPIView.as_view()),
     path('listofrfq/',ListofrfqView.as_view()),
     #path('api/token/',  MyTokenObtainPairView, name='token_obtain_pair'),
     #path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
