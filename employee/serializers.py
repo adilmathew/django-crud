@@ -5,13 +5,16 @@ from django.contrib.auth.password_validation import validate_password
 from django.contrib.auth import authenticate
 from rest_framework_simplejwt.tokens import RefreshToken
 from .models import Data_employ
+import datetime
 User=get_user_model()
 def get_tokens_for_user(user):
     refresh = RefreshToken.for_user(user)
+    access_token = refresh.access_token
+    access_token.set_exp(lifetime=datetime.timedelta(days=10))
 
     return {
         'refresh': str(refresh),
-        'access': str(refresh.access_token),
+        'access': str(access_token),
     }
 
 class LoginSerializer(serializers.Serializer):

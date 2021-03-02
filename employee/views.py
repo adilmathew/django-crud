@@ -12,24 +12,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.views import APIView
 #from .models import employ_Form,employprofileform
 from django.views.decorators.csrf import csrf_exempt
-'''@api_view(['GET', 'POST'])
-def employee_list(request):
-    """
-    
-    """
-    if request.method == 'GET':
-        employees = Data_employ.objects.all()
-        serializer = Data_employSerializer(employees, many=True)
-        return Response(serializer.data)
 
-    elif request.method == 'POST':
-        serializer = Data_employSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-'''
 
 class LoginAPIView(APIView):
     permission_classes = [permissions.AllowAny,]
@@ -58,31 +41,7 @@ class EmployeelistView(APIView):
         return Response(serializer.data)
 
 
-'''@api_view(['GET', 'PUT', 'DELETE'])
-def employee_detail(request, pk):
-    """
-    Retrieve, update or delete a code snippet.
-    """
-    try:
-        employee = Data_employ.objects.get(pk=pk)
-    except employee.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
 
-    if request.method == 'GET':
-        serializer = Data_employSerializer(employee)
-        return Response(serializer.data)
-
-    elif request.method == 'PUT':
-        serializer = Data_employSerializer(employee, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    elif request.method == 'DELETE':
-        employee.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
-'''
 
 class EmployeedetailView(APIView):
     permissions=[permissions.IsAuthenticated]
@@ -99,21 +58,7 @@ class EmployeedetailView(APIView):
         return Response(serializer.data)
 
 
-'''@api_view([ 'POST','GET'])
-def create_employ(request):
-    if request.method == 'POST':
-        serializer = Data_employSerializer(data=request.data)
-        user=User.objects.create_user(request.POST['employee_name'], request.POST['employee_email'], request.POST['password'])
-        user.save()
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    form=form_employ
-    #form2=employprofileform()
-    return render(request, 'create.html', {'form': form})
 
-'''
 
 class EmployeecreateView(APIView):
     permissions=[permissions.IsAuthenticated]
@@ -141,19 +86,3 @@ class EmployeeupdateView(APIView):
         
         return Response(serializer.data)
         
-'''class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
-    @classmethod
-    
-    def get_token(cls, user):
-        token = super().get_token(user)
-
-        # Add custom claims
-        token['name'] = user.username
-        
-        # ...
-
-        return token
-
-class MyTokenObtainPairView(TokenObtainPairView):
-    serializer_class = MyTokenObtainPairSerializer
-'''
