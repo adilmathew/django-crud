@@ -12,15 +12,16 @@ def get_tokens_for_user(user):
     access_token = refresh.access_token
     access_token.set_exp(lifetime=datetime.timedelta(days=10))
 
-    return {
-        'refresh': str(refresh),
-        'access': str(access_token),
-    }
+    return [
+        refresh,
+        access_token,
+    ]
 
 class LoginSerializer(serializers.Serializer):
     email = serializers.CharField(max_length=255)
     password = serializers.CharField(max_length=128, write_only=True)
-    token = serializers.CharField(max_length=500, read_only=True)
+    refresh_token = serializers.CharField(max_length=500, read_only=True)
+    access_token = serializers.CharField(max_length=500, read_only=True)
 
     def validate(self, data):
         
@@ -55,11 +56,13 @@ class LoginSerializer(serializers.Serializer):
             )
 
         if user.is_active:
-            token=get_tokens_for_user(user)
+            refresh_token=get_tokens_for_user(user)[0]
+            access_token=get_tokens_for_user(user)[1]
 
         return {
             'email': user.email,
-            'token': token,
+            'refresh_token': refresh_token,
+            'access_token':access_token,
         }
 
 
